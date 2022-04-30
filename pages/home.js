@@ -13,13 +13,14 @@ import { getCourses } from "../lib/_utils";
 
 function Home({ courseData }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
+  const [searchTerm, setSearchTerm] = useState();
   onAuthStateChanged(auth, (user)=>{
     if (user) setIsLoggedIn(true);
     else setIsLoggedIn(false);
   });
   
   useEffect(()=>{
-    if (!isLoggedIn){ 
+    if (isLoggedIn){ 
       Router.push("/");
     }
   },[isLoggedIn])
@@ -35,12 +36,13 @@ function Home({ courseData }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Homepage</h1>
         <Spacer y={2.5} />
-        <Input
-          clearable
+        <input
           label="Search"
           placeholder="Name or class"
-          size="xl"
-          width="600px"
+          onChange={(e)=>{
+            setSearchTerm(e.target.value);
+          }}
+          value={searchTerm}
         />
         <Spacer y={2.5} />
         <Grid>
