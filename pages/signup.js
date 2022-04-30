@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { Button, Grid, Input, Text, Link } from "@nextui-org/react";
+import { Button, Grid, Input, Text, Link, Spacer } from "@nextui-org/react";
 
-function SignIn() {
+function SignUp() {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,29 +13,52 @@ function SignIn() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>Sign Up</h1>
-        <br />
+        <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}>
-          <Input size="xl" clearable bordered labelPlaceholder="First Name" />
-          <Input size="xl" clearable bordered labelPlaceholder="Last Name" />
-          <Input size="xl" clearable bordered labelPlaceholder="Email" />
+          <Input
+            width="300px"
+            size="xl"
+            clearable
+            bordered
+            labelPlaceholder="First Name"
+          />
+          <Spacer y={2} />
+          <Input
+            width="300px"
+            size="xl"
+            clearable
+            bordered
+            labelPlaceholder="Last Name"
+          />
+          <Spacer y={2} />
+          <Input
+            width="300px"
+            size="xl"
+            clearable
+            bordered
+            labelPlaceholder="Email"
+          />
+          <Spacer y={2} />
           <Input.Password
+            width="300px"
             size="xl"
             clearable
             bordered
             labelPlaceholder="Password"
           />
+          <Spacer y={2} />
           <Input.Password
+            width="300px"
             size="xl"
             clearable
             bordered
             labelPlaceholder="Confirm Password"
           />
-          <br />
-          Already have an account? Sign in
-          <Link href="/signin">
-            <Text>here</Text>
-          </Link>
-          <br />
+          <Spacer y={2.5} />
+          <Text>
+            <Link href="/signin">Already have an account?</Link>
+          </Text>
+          <Spacer y={2.5} />
           <Grid>
             <Button size="xl" color="gradient" auto ghost>
               Sign up
@@ -60,4 +83,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

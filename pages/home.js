@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { Button, Grid, Input, Link, Text, Spacer } from "@nextui-org/react";
+import { Button, Grid, Input, Link, Text } from "@nextui-org/react";
 
-function SignIn() {
+function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,23 +13,8 @@ function SignIn() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Sign In</h1>
-        <Spacer y={2.5} />
-        <div className={styles.grid} style={{ flexDirection: "column" }}>
-          <Input size="xl" clearable bordered labelPlaceholder="Email" />
-          <Spacer y={2} />
-          <Input size="xl" clearable bordered labelPlaceholder="Password" />
-          <Spacer y={2.5} />
-          <Text>
-            <Link href="/signup">Don't have an account?</Link>
-          </Text>
-          <Spacer y={2.5} />
-          <Grid>
-            <Button size="xl" color="gradient" auto ghost>
-              Sign in
-            </Button>
-          </Grid>
-        </div>
+        <h1 className={styles.title}>Homepage</h1>
+        <br />
       </main>
 
       <footer className={styles.footer}>
@@ -48,4 +33,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Home;
