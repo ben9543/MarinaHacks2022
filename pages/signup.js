@@ -69,13 +69,13 @@ function SignUp() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/ben9543/MarinaHacks2022"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Created by Ben Kweon, Janelle Chan, and Jordan Hilado
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/github.svg" alt="Vercel Logo" width={20} height={20} />
           </span>
         </a>
       </footer>

@@ -32,9 +32,21 @@ function SignIn() {
         <h1 className={styles.title}>Sign In</h1>
         <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}>
-          <Input size="xl" clearable bordered labelPlaceholder="Email" />
+          <Input
+            width="300px"
+            size="xl"
+            clearable
+            bordered
+            labelPlaceholder="Email"
+          />
           <Spacer y={2} />
-          <Input size="xl" clearable bordered labelPlaceholder="Password" />
+          <Input
+            width="300px"
+            size="xl"
+            clearable
+            bordered
+            labelPlaceholder="Password"
+          />
           <Spacer y={2.5} />
           <Text>
             <Link href="/signup">Don't have an account?</Link>
@@ -50,13 +62,13 @@ function SignIn() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/ben9543/MarinaHacks2022"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Created by Ben Kweon, Janelle Chan, and Jordan Hilado
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/github.svg" alt="Vercel Logo" width={20} height={20} />
           </span>
         </a>
       </footer>
