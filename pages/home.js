@@ -1,18 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { Button, Grid, Input, Link, Text, Spacer } from "@nextui-org/react";
+import {
+  Card,
+  Button,
+  Grid,
+  Input,
+  Link,
+  Text,
+  Spacer,
+} from "@nextui-org/react";
 
 // Firebase imports
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/_firebase.config";
 import { useState } from "react";
-import Router from 'next/router'
+import Router from "next/router";
 import { useEffect } from "react";
 import { getCourses } from "../lib/_utils";
 
 function Home({ courseData }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
+<<<<<<< HEAD
   const [searchTerm, setSearchTerm] = useState();
   onAuthStateChanged(auth, (user)=>{
     if (user) setIsLoggedIn(true);
@@ -21,10 +30,26 @@ function Home({ courseData }) {
   
   useEffect(()=>{
     if (isLoggedIn){ 
+=======
+  onAuthStateChanged(auth, (user) => {
+    if (user) setIsLoggedIn(true);
+    else setIsLoggedIn(false);
+  });
+
+  useEffect(() => {
+    if (isLoggedIn) {
+>>>>>>> bb734120331d7d8a67fb29b374e9b492d48e3be7
       Router.push("/");
     }
-  },[isLoggedIn])
-  
+  }, [isLoggedIn]);
+
+  // sort courseData by course code
+  const sortedCourseData = courseData.sort((a, b) => {
+    if (a.code < b.code) return -1;
+    if (a.code > b.code) return 1;
+    return 0;
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,7 +61,13 @@ function Home({ courseData }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Homepage</h1>
         <Spacer y={2.5} />
+<<<<<<< HEAD
         <input
+=======
+        {/* search the courseData object for courses */}
+        <Input
+          clearable
+>>>>>>> bb734120331d7d8a67fb29b374e9b492d48e3be7
           label="Search"
           placeholder="Name or class"
           onChange={(e)=>{
@@ -46,10 +77,39 @@ function Home({ courseData }) {
         />
         <Spacer y={2.5} />
         <Grid>
-          <Button size="xl" shadow color="gradient" auto>
-            Browse StudyBuddies
-          </Button>
+          <Link href="/buddies">
+            <Button size="xl" shadow color="gradient" auto>
+              Browse StudyBuddies
+            </Button>
+          </Link>
         </Grid>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            rowGap: 80,
+            columnGap: 80,
+            maxWidth: 1200,
+          }}
+        >
+          {courseData.map((course) => {
+            return (
+              <>
+                <Card css={{ mw: "330px" }}>
+                  <Text h4>{course.code}</Text>
+                  <Text>{course.title}</Text>
+                  <Card.Footer>
+                    <Link color="primary" target="_blank" href="/">
+                      View StudyBuddies
+                    </Link>
+                  </Card.Footer>
+                </Card>
+              </>
+            );
+          })}
+        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -70,13 +130,13 @@ function Home({ courseData }) {
 
 export const getStaticProps = async () => {
   const courses = await getCourses();
-  let result = []
-  courses.forEach(doc=>{
+  let result = [];
+  courses.forEach((doc) => {
     result.push(doc.data());
-  })
+  });
   return {
-    props: { courseData:result }
-  }
-}
+    props: { courseData: result },
+  };
+};
 
 export default Home;
