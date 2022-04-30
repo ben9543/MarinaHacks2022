@@ -39,7 +39,6 @@ function Home({ courseData, users }) {
     if (a.code > b.code) return 1;
     return 0;
   });
-  
 
   return (
     <div className={styles.container}>
@@ -117,7 +116,7 @@ export const getStaticProps = async () => {
     result.push(doc.data());
   });
   return {
-    props: { courseData: result, users},
+    props: { courseData: result, users },
   };
 };
 

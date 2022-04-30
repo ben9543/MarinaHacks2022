@@ -13,8 +13,7 @@ import {
 import { useRouter } from "next/router";
 import { getUsersByClassName } from "../../lib/_utils";
 
-function ClassUsers({ userData }) {
-  console.log(userData);
+function ClassUsers({ users }) {
   const router = useRouter();
   const { CID } = router.query;
   return (
@@ -28,7 +27,7 @@ function ClassUsers({ userData }) {
         <h1 className={styles.title}>StudyBuddies available in {CID}</h1>
         <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}>
-          {/* {userData.map((user) => {
+          {users.map((user) => {
             let firstName = user.firstName;
             let lastName = user.lastName;
             let email = user.email;
@@ -41,12 +40,7 @@ function ClassUsers({ userData }) {
                 />
               </>
             );
-          })} */}
-          <User
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            name="Ariana Wattson"
-            description="UI/UX Designer @Github"
-          />
+          })}
           <Spacer y={2.5} />
           <Text>
             <Link href="/signin">Already have an account?</Link>
@@ -78,16 +72,18 @@ function ClassUsers({ userData }) {
   );
 }
 
-export const getInitialProps = async ({ params }) => {
-  console.log(params);
-  const userData = await getUsersByClassName(params.CID);
-  let result = [];
-  courses.forEach((doc) => {
-    result.push(doc.data());
-  });
+export const getStaticProps = async ({ params }) => {
+  const users = await getUsersByClassName(params.CID);
+  console.log("users", users);
   return {
-    props: { userData: result },
+    props: { users },
   };
 };
 
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
 export default ClassUsers;
