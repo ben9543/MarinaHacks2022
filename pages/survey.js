@@ -55,14 +55,6 @@ function Survey() {
             size="xl"
             clearable
             bordered
-            labelPlaceholder="Student Email"
-          />
-          <Spacer y={2} />
-          <Input
-            width="300px"
-            size="xl"
-            clearable
-            bordered
             labelPlaceholder="Discord Tag"
           />
           <Spacer y={2.5} />
