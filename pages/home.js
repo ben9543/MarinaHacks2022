@@ -116,6 +116,7 @@ function Home({ courseData }) {
 
 export const getStaticProps = async () => {
   const courses = await getCourses();
+  console.log("here")
   let result = [];
   courses.forEach((doc) => {
     result.push(doc.data());
