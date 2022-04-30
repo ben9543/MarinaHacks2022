@@ -3,7 +3,24 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Button, Grid, Input, Text, Link, Spacer } from "@nextui-org/react";
 
+// Firebase imports
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../lib/_firebase.config";
+import { useState } from "react";
+import Router from 'next/router'
+import { useEffect } from "react";
+
 function SignUp() {
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  onAuthStateChanged(auth, (user)=>{
+    if (user) setIsLoggedIn(true);
+    else setIsLoggedIn(false);
+  });
+  useEffect(()=>{
+    if (isLoggedIn){ 
+      Router.push("/home");
+    }
+  },[isLoggedIn]);
   return (
     <div className={styles.container}>
       <Head>
