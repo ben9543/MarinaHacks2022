@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { Button, Grid, Link, Text, Spacer } from "@nextui-org/react";
+import { Button, Grid, Link, Text, Spacer, Collapse } from "@nextui-org/react";
 
 export default function Home() {
   return (
@@ -43,6 +43,35 @@ export default function Home() {
             </Link>
           </Grid>
         </div>
+        <Spacer y={10} />
+        <Text
+          h1
+          size={40}
+          css={{
+            textGradient: "45deg, $blue500 -20%, $pink500 50%",
+          }}
+          weight="bold"
+        >
+          FAQ
+        </Text>
+        <Collapse.Group width="300">
+          <Collapse title="What is StudyBuddy?">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+          <Collapse title="How does it work?">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse>
+        </Collapse.Group>
       </main>
 
       <footer className={styles.footer}>
