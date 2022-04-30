@@ -17,9 +17,9 @@ import { auth } from "../lib/_firebase.config";
 import { useState } from "react";
 import Router from "next/router";
 import { useEffect } from "react";
-import { getCourses } from "../lib/_utils";
+import { getCourses, getUsersByClassName } from "../lib/_utils";
 
-function Home({ courseData }) {
+function Home({ courseData, users }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
 
   onAuthStateChanged(auth, (user) => {
@@ -39,6 +39,7 @@ function Home({ courseData }) {
     if (a.code > b.code) return 1;
     return 0;
   });
+  
 
   return (
     <div className={styles.container}>
@@ -109,13 +110,14 @@ function Home({ courseData }) {
 
 export const getStaticProps = async () => {
   const courses = await getCourses();
-  console.log("here")
+  const users = await getUsersByClassName("CECS 100");
+
   let result = [];
   courses.forEach((doc) => {
     result.push(doc.data());
   });
   return {
-    props: { courseData: result },
+    props: { courseData: result, users},
   };
 };
 

@@ -79,7 +79,8 @@ function ClassUsers({ userData }) {
 }
 
 export const getInitialProps = async ({ params }) => {
-  const courses = await getUsersByClassName(params.CID);
+  console.log(params);
+  const userData = await getUsersByClassName(params.CID);
   let result = [];
   courses.forEach((doc) => {
     result.push(doc.data());
