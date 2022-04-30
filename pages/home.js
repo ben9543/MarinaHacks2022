@@ -21,16 +21,7 @@ import { getCourses } from "../lib/_utils";
 
 function Home({ courseData }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
-<<<<<<< HEAD
-  const [searchTerm, setSearchTerm] = useState();
-  onAuthStateChanged(auth, (user)=>{
-    if (user) setIsLoggedIn(true);
-    else setIsLoggedIn(false);
-  });
-  
-  useEffect(()=>{
-    if (isLoggedIn){ 
-=======
+
   onAuthStateChanged(auth, (user) => {
     if (user) setIsLoggedIn(true);
     else setIsLoggedIn(false);
@@ -38,7 +29,6 @@ function Home({ courseData }) {
 
   useEffect(() => {
     if (isLoggedIn) {
->>>>>>> bb734120331d7d8a67fb29b374e9b492d48e3be7
       Router.push("/");
     }
   }, [isLoggedIn]);
@@ -61,13 +51,9 @@ function Home({ courseData }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Homepage</h1>
         <Spacer y={2.5} />
-<<<<<<< HEAD
-        <input
-=======
         {/* search the courseData object for courses */}
         <Input
           clearable
->>>>>>> bb734120331d7d8a67fb29b374e9b492d48e3be7
           label="Search"
           placeholder="Name or class"
           onChange={(e)=>{
