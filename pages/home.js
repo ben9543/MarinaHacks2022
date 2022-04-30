@@ -3,7 +3,27 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Button, Grid, Input, Link, Text, Spacer } from "@nextui-org/react";
 
-function Home() {
+// Firebase imports
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../lib/_firebase.config";
+import { useState } from "react";
+import Router from 'next/router'
+import { useEffect } from "react";
+import { getCourses } from "../lib/_utils";
+
+function Home({ courseData }) {
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  onAuthStateChanged(auth, (user)=>{
+    if (user) setIsLoggedIn(true);
+    else setIsLoggedIn(false);
+  });
+  
+  useEffect(()=>{
+    if (!isLoggedIn){ 
+      Router.push("/");
+    }
+  },[isLoggedIn])
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -44,6 +64,17 @@ function Home() {
       </footer>
     </div>
   );
+}
+
+export const getStaticProps = async () => {
+  const courses = await getCourses();
+  let result = []
+  courses.forEach(doc=>{
+    result.push(doc.data());
+  })
+  return {
+    props: { courseData:result }
+  }
 }
 
 export default Home;
