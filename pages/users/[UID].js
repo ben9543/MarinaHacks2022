@@ -19,7 +19,7 @@ function User() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>User: [UID]</h1>
+        <h1 className={styles.title}>Profile: [UID]</h1>
         <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}>
           <Input
