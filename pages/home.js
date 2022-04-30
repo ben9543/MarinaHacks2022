@@ -52,15 +52,7 @@ function Home({ courseData }) {
         <h1 className={styles.title}>Homepage</h1>
         <Spacer y={2.5} />
         {/* search the courseData object for courses */}
-        <Input
-          clearable
-          label="Search"
-          placeholder="Name or class"
-          onChange={(e)=>{
-            setSearchTerm(e.target.value);
-          }}
-          value={searchTerm}
-        />
+        <Input clearable label="Search" placeholder="Name or class" />
         <Spacer y={2.5} />
         <Grid>
           <Link href="/buddies">
@@ -81,13 +73,14 @@ function Home({ courseData }) {
           }}
         >
           {courseData.map((course) => {
+            let id = course.id;
             return (
               <>
                 <Card css={{ mw: "330px" }}>
                   <Text h4>{course.code}</Text>
                   <Text>{course.title}</Text>
                   <Card.Footer>
-                    <Link color="primary" target="_blank" href="/">
+                    <Link color="primary" href={`/classes/${course.code}`}>
                       View StudyBuddies
                     </Link>
                   </Card.Footer>
