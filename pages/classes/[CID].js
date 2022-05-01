@@ -46,13 +46,14 @@ function ClassUsers({ users }) {
             let firstName = user.firstName;
             let lastName = user.lastName;
             let email = user.email;
+            let avatar = user.avatar;
             return (
               <>
                 <Card hoverable clickable>
                   <Card.Body css={{ p: 0 }}>
                     <Card.Image
                       objectFit="cover"
-                      src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png"
+                      src={avatar}
                       width={100}
                       height={100}
                     />

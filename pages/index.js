@@ -56,12 +56,7 @@ export default function Home() {
         </Text>
         <Collapse.Group width="300">
           <Collapse title="What is StudyBuddy?">
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
+            <Text>aslkdfjklsajdflkasjdflksjfd</Text>
           </Collapse>
           <Collapse title="How does it work?">
             <Text>
