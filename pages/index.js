@@ -56,14 +56,17 @@ export default function Home() {
         </Text>
         <Collapse.Group width="300">
           <Collapse title="What is StudyBuddy?">
-            <Text>aslkdfjklsajdflkasjdflksjfd</Text>
+            <Text>
+              StudyBuddy is a platform that will allow you to connect with a
+              classmate that would like to study together.
+            </Text>
           </Collapse>
           <Collapse title="How does it work?">
             <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Simply enter your classes and look for a buddy that is available
+              to connect with. Each class contains a list of buddies that will
+              show contact information. Just reach out and message them to study
+              together!
             </Text>
           </Collapse>
         </Collapse.Group>
