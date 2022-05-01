@@ -42,6 +42,14 @@ export default function Home() {
               </Button>
             </Link>
           </Grid>
+          <Spacer y={2} />
+          <Grid>
+            <Link href="/home">
+              <Button size="xl" color="gradient" auto ghost>
+                Home
+              </Button>
+            </Link>
+          </Grid>
         </div>
         <Spacer y={10} />
         <Text
