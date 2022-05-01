@@ -9,8 +9,11 @@ import {
   Link,
   Spacer,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 
 function User() {
+  const router = useRouter();
+  const { UID } = router.query;
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +22,7 @@ function User() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>Profile: [UID]</h1>
+        <h1 className={styles.title}>Profile: {UID}</h1>
         <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}>
           <Input

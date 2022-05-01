@@ -9,12 +9,14 @@ import {
   Link,
   Spacer,
   User,
+  Card,
+  Row,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { getUsersByClassName } from "../../lib/_utils";
 
-function ClassUsers({ userData }) {
-  console.log(userData);
+function ClassUsers({ users }) {
+  console.log(users);
   const router = useRouter();
   const { CID } = router.query;
   return (
@@ -25,40 +27,50 @@ function ClassUsers({ userData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>StudyBuddies available in {CID}</h1>
+        <h1 className={styles.title}>
+          {users.length} StudyBuddies available in {CID}
+        </h1>
         <Spacer y={2.5} />
-        <div className={styles.grid} style={{ flexDirection: "column" }}>
-          {/* {userData.map((user) => {
+        <div
+          className={styles.grid}
+          style={{
+            border: "1px solid blue",
+            width: "20%",
+            display: "flex",
+            flexDirection: "row",
+            columnGap: 10,
+            rowGap: 10,
+          }}
+        >
+          {users.map((user) => {
             let firstName = user.firstName;
             let lastName = user.lastName;
             let email = user.email;
             return (
               <>
-                <User
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                  name={firstName + " " + lastName}
-                  description={email}
-                />
+                <Card hoverable clickable>
+                  <Card.Body css={{ p: 0 }}>
+                    <Card.Image
+                      objectFit="cover"
+                      src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png"
+                      width={100}
+                      height={100}
+                    />
+                  </Card.Body>
+                  <Card.Footer justify="flex-start">
+                    <Row wrap="wrap" justify="space-between">
+                      <Text b>{firstName + " " + lastName}</Text>
+                      <Text
+                        css={{ color: "$accents4", fontWeight: "$semibold" }}
+                      >
+                        {email}
+                      </Text>
+                    </Row>
+                  </Card.Footer>
+                </Card>
               </>
             );
-          })} */}
-          <User
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            name="Ariana Wattson"
-            description="UI/UX Designer @Github"
-          />
-          <Spacer y={2.5} />
-          <Text>
-            <Link href="/signin">Already have an account?</Link>
-          </Text>
-          <Spacer y={2.5} />
-          <Grid>
-            <Link href="/survey">
-              <Button size="xl" color="gradient" auto ghost>
-                Create Account
-              </Button>
-            </Link>
-          </Grid>
+          })}
         </div>
       </main>
 
@@ -78,16 +90,17 @@ function ClassUsers({ userData }) {
   );
 }
 
-export const getInitialProps = async ({ params }) => {
-  console.log(params);
-  const userData = await getUsersByClassName(params.CID);
-  let result = [];
-  courses.forEach((doc) => {
-    result.push(doc.data());
-  });
+export const getStaticProps = async ({ params }) => {
+  const users = await getUsersByClassName(params.CID);
   return {
-    props: { userData: result },
+    props: { users },
   };
 };
 
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
 export default ClassUsers;
