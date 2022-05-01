@@ -31,7 +31,6 @@ function Buddies({ users }) {
         <div
           className={styles.grid}
           style={{
-            border: "1px solid blue",
             width: "20%",
             display: "flex",
             flexDirection: "row",
