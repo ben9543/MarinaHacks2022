@@ -46,31 +46,28 @@ function ClassUsers({ users }) {
             let firstName = user.firstName;
             let lastName = user.lastName;
             let email = user.email;
-            let id = user.id;
             return (
               <>
-                <Link href={`/users/${id}`}>
-                  <Card hoverable clickable>
-                    <Card.Body css={{ p: 0 }}>
-                      <Card.Image
-                        objectFit="cover"
-                        src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png"
-                        width={100}
-                        height={100}
-                      />
-                    </Card.Body>
-                    <Card.Footer justify="flex-start">
-                      <Row wrap="wrap" justify="space-between">
-                        <Text b>{firstName + " " + lastName + " "}</Text>
-                        <Text
-                          css={{ color: "$accents4", fontWeight: "$semibold" }}
-                        >
-                          {email}
-                        </Text>
-                      </Row>
-                    </Card.Footer>
-                  </Card>
-                </Link>
+                <Card hoverable clickable>
+                  <Card.Body css={{ p: 0 }}>
+                    <Card.Image
+                      objectFit="cover"
+                      src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png"
+                      width={100}
+                      height={100}
+                    />
+                  </Card.Body>
+                  <Card.Footer justify="flex-start">
+                    <Row wrap="wrap" justify="space-between">
+                      <Text b>{firstName + " " + lastName}</Text>
+                      <Text
+                        css={{ color: "$accents4", fontWeight: "$semibold" }}
+                      >
+                        {email}
+                      </Text>
+                    </Row>
+                  </Card.Footer>
+                </Card>
               </>
             );
           })}

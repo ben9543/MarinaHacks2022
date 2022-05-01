@@ -26,6 +26,11 @@ function User() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>Profile: {UID}</h1>
+        <h1 className={styles.title}>First Name: {user.firstName}</h1>
+        <h1 className={styles.title}>Last Name: {user.firstName}</h1>
+        <h1 className={styles.title}>Email: {user.email}</h1>
+        <h1 className={styles.title}>Discord: {user.discordID}</h1>
+        <h1 className={styles.title}>Department: {user.department}</h1>
         <Spacer y={2.5} />
         <div className={styles.grid} style={{ flexDirection: "column" }}></div>
       </main>
