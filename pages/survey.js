@@ -62,11 +62,13 @@ function Survey() {
             <Link href="/signin">Already have an account?</Link>
           </Text>
           <Spacer y={2.5} />
-          <Grid>
-            <Button size="xl" color="gradient" auto ghost>
-              Continue
-            </Button>
-          </Grid>
+          <Link href="/home">
+            <Grid>
+              <Button size="xl" color="gradient" auto ghost>
+                Continue
+              </Button>
+            </Grid>
+          </Link>
         </div>
       </main>
 

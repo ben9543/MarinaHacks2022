@@ -7,21 +7,20 @@ import { Button, Grid, Input, Link, Text, Spacer } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/_firebase.config";
 import { useState } from "react";
-import Router from 'next/router'
+import Router from "next/router";
 import { useEffect } from "react";
-
 
 function SignIn() {
   const [isLoggedIn, setIsLoggedIn] = useState();
-  onAuthStateChanged(auth, (user)=>{
+  onAuthStateChanged(auth, (user) => {
     if (user) setIsLoggedIn(true);
     else setIsLoggedIn(false);
   });
-  useEffect(()=>{
-    if (isLoggedIn){ 
+  useEffect(() => {
+    if (isLoggedIn) {
       Router.push("/home");
     }
-  },[isLoggedIn])
+  }, [isLoggedIn]);
   return (
     <div className={styles.container}>
       <Head>
@@ -54,11 +53,13 @@ function SignIn() {
             <Link href="/signup">Don't have an account?</Link>
           </Text>
           <Spacer y={2.5} />
-          <Grid>
-            <Button size="xl" color="gradient" auto ghost>
-              Sign in
-            </Button>
-          </Grid>
+          <Link href="/home">
+            <Grid>
+              <Button size="xl" color="gradient" auto ghost>
+                Sign in
+              </Button>
+            </Grid>
+          </Link>
         </div>
       </main>
 
@@ -77,6 +78,5 @@ function SignIn() {
     </div>
   );
 }
-
 
 export default SignIn;

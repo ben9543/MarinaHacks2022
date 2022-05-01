@@ -40,8 +40,6 @@ function Home({ courseData, users }) {
     return 0;
   });
 
-
-
   return (
     <div className={styles.container}>
       <Head>
@@ -56,13 +54,13 @@ function Home({ courseData, users }) {
         {/* search the courseData object for courses */}
         <Input clearable label="Search" placeholder="Name or class" />
         <Spacer y={2.5} />
-        <Grid>
+        {/* <Grid>
           <Link href="/buddies">
             <Button size="xl" shadow color="gradient" auto>
               Browse StudyBuddies
             </Button>
           </Link>
-        </Grid>
+        </Grid> */}
         <div
           style={{
             display: "flex",
