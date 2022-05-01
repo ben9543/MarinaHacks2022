@@ -9,9 +9,14 @@ import {
   Text,
   Spacer,
   User,
+  Card,
+  Row,
 } from "@nextui-org/react";
+import { getAllUsers, getCourses, getUsersByClassName } from "../lib/_utils";
 
-function Buddies() {
+function Buddies({ users }) {
+  console.log(users[0].id);
+  console.log(users.length);
   return (
     <div className={styles.container}>
       <Head>
@@ -21,24 +26,52 @@ function Buddies() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>All StudyBuddies</h1>
+        <h1 className={styles.title}>{users.length} StudyBuddies</h1>
         <Spacer y={2.5} />
-        <User
-          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-          name="Ariana Wattson"
-          description="UI/UX Designer @Github"
-        />
-        <div className={styles.grid} style={{ flexDirection: "column" }}>
-          <Spacer y={2.5} />
-          <Text>
-            <Link href="/signup">Don't have an account?</Link>
-          </Text>
-          <Spacer y={2.5} />
-          <Grid>
-            <Button size="xl" color="gradient" auto ghost>
-              Sign in
-            </Button>
-          </Grid>
+        <div
+          className={styles.grid}
+          style={{
+            border: "1px solid blue",
+            width: "20%",
+            display: "flex",
+            flexDirection: "row",
+            columnGap: 10,
+            rowGap: 10,
+          }}
+        >
+          {users.map((user) => {
+            let firstName = user.firstName;
+            let lastName = user.lastName;
+            let email = user.email;
+            let id = user.id;
+            console.log(id);
+            return (
+              <>
+                <Link href={`/users/${id}`}>
+                  <Card hoverable clickable>
+                    <Card.Body css={{ p: 0 }}>
+                      <Card.Image
+                        objectFit="cover"
+                        src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png"
+                        width={100}
+                        height={100}
+                      />
+                    </Card.Body>
+                    <Card.Footer justify="flex-start">
+                      <Row wrap="wrap" justify="space-between">
+                        <Text b>{firstName + " " + lastName}</Text>
+                        <Text
+                          css={{ color: "$accents4", fontWeight: "$semibold" }}
+                        >
+                          {email}
+                        </Text>
+                      </Row>
+                    </Card.Footer>
+                  </Card>
+                </Link>
+              </>
+            );
+          })}
         </div>
       </main>
 
@@ -57,5 +90,18 @@ function Buddies() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const courses = await getCourses();
+  const users = await getAllUsers();
+
+  let result = [];
+  courses.forEach((doc) => {
+    result.push(doc.data());
+  });
+  return {
+    props: { courseData: result, users },
+  };
+};
 
 export default Buddies;
