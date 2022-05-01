@@ -10,10 +10,13 @@ import {
   Spacer,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import { getUser } from "../../lib/_utils";
 
 function User() {
   const router = useRouter();
   const { UID } = router.query;
+  const user = getUser({ uid: UID });
+  console.log(user);
   return (
     <div className={styles.container}>
       <Head>
@@ -24,59 +27,7 @@ function User() {
       <main className={styles.main}>
         <h1 className={styles.title}>Profile: {UID}</h1>
         <Spacer y={2.5} />
-        <div className={styles.grid} style={{ flexDirection: "column" }}>
-          <Input
-            width="300px"
-            size="xl"
-            clearable
-            bordered
-            labelPlaceholder="First Name"
-          />
-          <Spacer y={2} />
-          <Input
-            width="300px"
-            size="xl"
-            clearable
-            bordered
-            labelPlaceholder="Last Name"
-          />
-          <Spacer y={2} />
-          <Input
-            width="300px"
-            size="xl"
-            clearable
-            bordered
-            labelPlaceholder="Email"
-          />
-          <Spacer y={2} />
-          <Input.Password
-            width="300px"
-            size="xl"
-            clearable
-            bordered
-            labelPlaceholder="Password"
-          />
-          <Spacer y={2} />
-          <Input.Password
-            width="300px"
-            size="xl"
-            clearable
-            bordered
-            labelPlaceholder="Confirm Password"
-          />
-          <Spacer y={2.5} />
-          <Text>
-            <Link href="/signin">Already have an account?</Link>
-          </Text>
-          <Spacer y={2.5} />
-          <Grid>
-            <Link href="/survey">
-              <Button size="xl" color="gradient" auto ghost>
-                Create Account
-              </Button>
-            </Link>
-          </Grid>
-        </div>
+        <div className={styles.grid} style={{ flexDirection: "column" }}></div>
       </main>
 
       <footer className={styles.footer}>
