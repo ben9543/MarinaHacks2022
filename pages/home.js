@@ -40,6 +40,8 @@ function Home({ courseData, users }) {
     return 0;
   });
 
+
+
   return (
     <div className={styles.container}>
       <Head>
